@@ -2,11 +2,9 @@ import * as React from "react";
 import {
   ChakraProvider,
   Box,
-  theme,
   extendTheme,
 } from "@chakra-ui/react";
-import { Window } from "./components/appBrakcet";
-import { ConnectWallets } from "./components/innerds";
+import { Window } from "./components/window";
 import './fonts/fonts.css'
 
 const customTheme = extendTheme({

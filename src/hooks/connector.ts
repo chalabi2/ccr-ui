@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Web3 from "web3";
 import WalletLink from "@coinbase/wallet-sdk";
 
 export const useConnectMetaMask = (): [string | null, () => Promise<void>, (account: string | null) => void, boolean] => {
