@@ -186,7 +186,7 @@ export function ConnectWallets() {
                                 <Input
                                 placeholder="Cluster Name"
                                  color={"black"}
-                                 bgColor="white"
+                                 bgColor="grey"
                                  borderRadius="1px"
                                  borderColor="grey"
                                  height="30px"
@@ -238,7 +238,7 @@ export function ConnectWallets() {
                                 <Input
                                 placeholder="Cluster ID"
                                  color={"black"}
-                                 bgColor="white"
+                                 bgColor="grey"
                                  borderRadius="1px"
                                  borderColor="grey"
                                  height="30px"
@@ -290,7 +290,7 @@ export function ConnectWallets() {
                                 <Input
                                 placeholder="Cluster ID"
                                  color={"black"}
-                                 bgColor="white"
+                                 bgColor="grey"
                                  borderRadius="1px"
                                  borderColor="grey"
                                  height="30px"
@@ -345,7 +345,7 @@ export function ConnectWallets() {
                                 <Input
                                 placeholder="Cluster Name"
                                  color={"black"}
-                                 bgColor="white"
+                                 bgColor="grey"
                                  borderRadius="1px"
                                  borderColor="grey"
                                  height="30px"
@@ -396,7 +396,7 @@ export function ConnectWallets() {
                                 <Input
                                 placeholder="Cluster ID"
                                  color={"black"}
-                                 bgColor="white"
+                                 bgColor="grey"
                                  borderRadius="1px"
                                  borderColor="grey"
                                  height="30px"
@@ -412,7 +412,7 @@ export function ConnectWallets() {
                                  <Input
                                 placeholder="New Receiver"
                                  color={"black"}
-                                 bgColor="white"
+                                 bgColor="grey"
                                  borderRadius="1px"
                                  borderColor="grey"
                                  height="30px"
