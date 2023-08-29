@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import 'font-awesome/css/font-awesome.min.css';
-import { ConnectWallets } from "./innerds";
+import { BottomBar, ConnectWallets } from "./innerds";
 export function Window () {
     return (
         <StyledContainer>
@@ -31,6 +31,7 @@ export function Window () {
     </div>
   
     <div className="bottom-bar">
+        <BottomBar/>
     </div>
   </div>
 </div>
@@ -82,8 +83,8 @@ const StyledContainer = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 80%;
-    height: 80%;
+    width: 60%;
+    height: 50%;
     min-width: 500px;
     background-color: #c0c0c0;
     border-top: 3px solid #efefef;
