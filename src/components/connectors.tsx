@@ -14,6 +14,13 @@ import {
     TabPanels,
     TabPanel,
     Divider,
+    Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
   } from "@chakra-ui/react";
   import { useEffect, useState } from "react";
   import { useConnectMetaMask } from "../hooks/connector";
@@ -23,6 +30,8 @@ import {
   import { GetHighestClusterId } from "../hooks/getHIghestClusterId";
   import { GetReceivingAddress } from "../hooks/getReceiver"
   import { RegisterCluster } from "../hooks/registerCluster";
+  import { Connect } from "../hooks/Connect";
+  import { useAccount } from 'wagmi'
 
   // Wallet connector & contract interaction
   export function ContractWindow() {
@@ -36,8 +45,12 @@ import {
   
   // connect wallet and show data
   function ConnectWallets() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
     const [connected, setIsconnected] = useState(false);
-    const [accountMetaMask, connectMetaMask, setAccount] = useConnectMetaMask();
     const [balance, setBalance] = useState<string | null>(null);
   
     const feeCheck = () => {
@@ -51,12 +64,12 @@ import {
     };
   
     const checkedFees = feeCheck();
-  
+    const { address } = useAccount()
     useEffect(() => {
       const fetchBalance = async () => {
-        if (accountMetaMask) {
+        if (address) {
           const web3 = new Web3(window.ethereum);
-          const balanceWei = await web3.eth.getBalance(accountMetaMask);
+          const balanceWei = await web3.eth.getBalance(address);
           const balanceEth = web3.utils.fromWei(balanceWei, "ether");
           setBalance(balanceEth);
           setIsconnected(true);
@@ -67,17 +80,11 @@ import {
       };
   
       fetchBalance();
-    }, [accountMetaMask]);
+    }, [address]);
   
     const handleMetaMaskClick = async () => {
-
-      if (!connected) {
-        await connectMetaMask();
-      } else {
-
-        setAccount(null);
-      }
-    };
+      openModal();
+  };
   
     return (
       <VStack
@@ -91,7 +98,7 @@ import {
         spacing={1}
       >
         <Flex justifyContent={"center"} flexDirection={"row"} mt={4}>
-          <Img src="/keys.gif" height="40px" width="40px" mr={-8} />{" "}
+          <Img src="/ccr-ui/keys.gif" height="40px" width="40px" mr={-8} />{" "}
           <Button
             _active={{
               backgroundColor: "grey.200",
@@ -123,6 +130,68 @@ import {
           >
             {connected ? "Disconnect" : "Connect Wallet"}
           </Button>
+           <Modal 
+           size="md"
+           isOpen={isModalOpen} onClose={closeModal}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalBody
+          borderLeft="3px solid #efefef"
+          borderRight="3px solid black"
+          backgroundColor="lightgrey"
+          borderTop="3px solid #efefef"
+          >
+            <Flex
+    flexDirection="row"
+    justifyContent="space-between"
+    maxWidth="100%"
+    height="30px"
+    background="linear-gradient(90deg, #02cf7c 0%, #06FC99 100%)"
+    padding="5px"
+    mb={2}
+>
+              <Text
+              color="white"
+              fontSize="18px"
+              textAlign="center"
+              >Connect Wallet</Text>
+              <ModalCloseButton
+              mr="20px"
+              mt="6px"
+              size="sm"
+           _active={{
+            backgroundColor: "grey.200",
+            color: "#02cf7c",
+            borderColor: "#02cf7c",
+          }}
+          _selected={{
+            backgroundColor: "grey.200",
+            color: "#02cf7c",
+            borderColor: "#02cf7c",
+          }}
+          _hover={{ backgroundColor: "grey.200" }}
+          color={"black"}
+          bgColor="#c0c0c0"
+          borderRadius="1px"
+          borderColor="grey"
+          
+          borderLeft="3px solid #efefef"
+          borderRight="3px solid black"
+          borderBottom="3px solid black"
+          />
+            </Flex>
+         
+            <Connect />
+          </ModalBody>
+          <ModalFooter
+          borderBottom="3px solid black"
+           borderLeft="3px solid #efefef"
+           borderRight="3px solid black"
+          backgroundColor="lightgrey"
+          >
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
         </Flex>
   
         <Box
@@ -140,7 +209,7 @@ import {
           borderBottom="3px solid black"
         >
           <List padding={2} spacing={2} color="black">
-            <Text>Address : {accountMetaMask}</Text>
+            <Text>Address : {address}</Text>
             <Text>Amount : {balance ?? "0"} CANTO</Text>
             <Text>Fee Check : {checkedFees}</Text>
             <Text>

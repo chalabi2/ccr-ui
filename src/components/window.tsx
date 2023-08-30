@@ -13,7 +13,7 @@ export function Window () {
         <img 
         // @ts-ignore
         alt="logo"
-        src="/canto-logo.svg" />
+        src="/ccr-ui/canto-logo.svg" />
         <h1>Canto Cluster Registry </h1>
       </div>
       <div className="buttons">
@@ -22,7 +22,7 @@ export function Window () {
                                 <img 
                                     height="18px"
                                     width="18px"
-                                    src="/twitter.png" 
+                                    src="/ccr-ui/twitter.png" 
                                     alt="Twitter"
                                 />
                             </div>
@@ -32,7 +32,7 @@ export function Window () {
                                 <img 
                                     height="18px"
                                     width="18px"
-                                    src="/canto.png" 
+                                    src="/ccr-ui/canto.png" 
                                     alt="Canto"
                                 />
                             </div>
@@ -42,7 +42,7 @@ export function Window () {
                                 <img 
                                     height="18px"
                                     width="18px"
-                                    src="/github.png" 
+                                    src="/ccr-ui/github.png" 
                                     alt="GitHub"
                                 />
                             </div>
