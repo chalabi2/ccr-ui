@@ -130,8 +130,8 @@ const StyledContainer = styled.div`
     background: rgb(0, 0, 128);
     background: linear-gradient(
         90deg,
-        #02cf7c 0%,      
-        #06FC99 100%  
+        #03ab22 0%,      
+        #02c927 100%  
       );
     padding: 5px;
   

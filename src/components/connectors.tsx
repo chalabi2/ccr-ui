@@ -100,13 +100,13 @@ import {
           <Button
             _active={{
               backgroundColor: "grey.200",
-              color: "#02cf7c",
-              borderColor: "#02cf7c",
+              color: "#03ab22 ",
+              borderColor: "#03ab22 ",
             }}
             _selected={{
               backgroundColor: "grey.200",
-              color: "#02cf7c",
-              borderColor: "#02cf7c",
+              color: "#03ab22 ",
+              borderColor: "#03ab22 ",
             }}
             _hover={{ backgroundColor: "grey.200" }}
             color={"black"}
@@ -144,7 +144,7 @@ import {
     justifyContent="space-between"
     maxWidth="100%"
     height="30px"
-    background="linear-gradient(90deg, #02cf7c 0%, #06FC99 100%)"
+    background="linear-gradient(90deg, #03ab22 0%, #02c927 100%)"
     padding="5px"
     mb={2}
 >
@@ -159,20 +159,20 @@ import {
               size="sm"
            _active={{
             backgroundColor: "grey.200",
-            color: "#02cf7c",
-            borderColor: "#02cf7c",
+            color: "#03ab22 ",
+            borderColor: "#03ab22 ",
           }}
           _selected={{
             backgroundColor: "grey.200",
-            color: "#02cf7c",
-            borderColor: "#02cf7c",
+            color: "#03ab22 ",
+            borderColor: "#03ab22 ",
           }}
           _hover={{ backgroundColor: "grey.200" }}
           color={"black"}
           bgColor="#c0c0c0"
           borderRadius="1px"
           borderColor="grey"
-          
+          borderTop="3px solid #efefef"
           borderLeft="3px solid #efefef"
           borderRight="3px solid black"
           borderBottom="3px solid black"
@@ -320,7 +320,7 @@ function ContractCalls() {
             <Tab
               color="black"
               _hover={{ backgroundColor: "grey.200" }}
-              _selected={{ color: "black", borderColor: "#02cf7c" }}
+              _selected={{ color: "black", borderColor: "#03ab22 " }}
               borderTop="3px solid #efefef"
               bgColor="lightgrey"
               borderLeft="3px solid #efefef"
@@ -332,7 +332,7 @@ function ContractCalls() {
             <Tab
               color="black"
               _hover={{ backgroundColor: "grey.200" }}
-              _selected={{ color: "black", borderColor: "#02cf7c" }}
+              _selected={{ color: "black", borderColor: "#03ab22 " }}
               borderTop="3px solid #efefef"
               bgColor="lightgrey"
               borderLeft="3px solid #efefef"
@@ -401,13 +401,13 @@ function ContractCalls() {
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
@@ -470,13 +470,13 @@ function ContractCalls() {
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
@@ -540,13 +540,13 @@ function ContractCalls() {
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
@@ -627,13 +627,13 @@ function ContractCalls() {
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
@@ -710,13 +710,13 @@ function ContractCalls() {
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#02cf7c",
-                      borderColor: "#02cf7c",
+                      color: "#03ab22 ",
+                      borderColor: "#03ab22 ",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
