@@ -1,4 +1,5 @@
 import { Button, Box, Text, Grid } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { BaseError } from "viem";
 import { useAccount, useConnect, useDisconnect, useNetwork, useSwitchNetwork } from "wagmi";
 
@@ -18,9 +19,11 @@ export function Connect() {
     useSwitchNetwork();
 
 
-  if (chain && chain.id !== 7700 && switchNetwork) {
-    switchNetwork(7700);
-  }
+    useEffect(() => {
+      if (chain && chain.id !== 7700 && switchNetwork) {
+        switchNetwork(7700);
+      }
+    }, [chain, switchNetwork]); 
   return (
     <Box justifyContent="center">
       <Grid

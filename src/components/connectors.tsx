@@ -29,7 +29,7 @@ import {
   import { GetReceivingAddress } from "../hooks/getReceiver"
   import { RegisterCluster } from "../hooks/registerCluster";
   import { Connect } from "../hooks/Connect";
-  import { useAccount } from 'wagmi'
+  import { useAccount, useNetwork } from 'wagmi'
 
   // Wallet connector & contract interaction
   export function ContractWindow() {
@@ -43,6 +43,7 @@ import {
   
   // connect wallet and show data
   function ConnectWallets() {
+    const { chain } = useNetwork();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -62,10 +63,11 @@ import {
     };
   
     const checkedFees = feeCheck();
-    const { address } = useAccount()
+    const { address, isConnected } = useAccount()
     useEffect(() => {
       const fetchBalance = async () => {
-        if (address) {
+        if (address && window.ethereum) {
+          await window.ethereum.request({ method: 'eth_requestAccounts' });
           const web3 = new Web3(window.ethereum);
           const balanceWei = await web3.eth.getBalance(address);
           const balanceEth = web3.utils.fromWei(balanceWei, "ether");
@@ -78,7 +80,7 @@ import {
       };
   
       fetchBalance();
-    }, [address]);
+    }, [address, chain, isConnected]);
   
     const handleMetaMaskClick = async () => {
       openModal();
