@@ -20,6 +20,9 @@ import {
   import Web3 from "web3";
   import { useClusterQuery } from "../hooks/getClusterById";
   import { useClusterIdByName } from "../hooks/getIdByClusterName";
+  import { GetHighestClusterId } from "../hooks/getHIghestClusterId";
+  import { GetReceivingAddress } from "../hooks/getReceiver"
+  import { RegisterCluster } from "../hooks/registerCluster";
 
   // Wallet connector & contract interaction
   export function ContractWindow() {
@@ -67,7 +70,7 @@ import {
     }, [accountMetaMask]);
   
     const handleMetaMaskClick = async () => {
-      console.log("Button clicked");
+
       if (!connected) {
         await connectMetaMask();
       } else {
@@ -154,7 +157,7 @@ import {
 function ContractCalls() {
   // get name by id
     const [inputValue, setInputValue] = useState('');
-    const [queryId, setQueryId] = useState<string | null>(null);  // Set initial value to null
+    const [queryId, setQueryId] = useState<string | null>(null);  
     
     const { clusterName, error } = useClusterQuery(queryId);
     
@@ -163,14 +166,14 @@ function ContractCalls() {
     };
     
     const handleQueryClick = () => {
-        if (inputValue) {  // Optionally, ensure inputValue is not an empty string
-            setQueryId(inputValue);  // Trigger the contract call with the inputValue
+        if (inputValue) {  
+            setQueryId(inputValue); 
         }
     };
 
     // get id by name
     const [NameInputValue, setNameInputValue] = useState('');
-    const [nameQueryId, setNameQueryId] = useState<string | null>(null);  // Set initial value to null
+    const [nameQueryId, setNameQueryId] = useState<string | null>(null); 
     
     const { clusterId,  } = useClusterIdByName(nameQueryId);
     
@@ -179,10 +182,61 @@ function ContractCalls() {
     };
     
     const handleQueryClickName = () => {
-        if (NameInputValue) {  // Optionally, ensure inputValue is not an empty string
-          setNameQueryId(NameInputValue);  // Trigger the contract call with the inputValue
+        if (NameInputValue) { 
+          setNameQueryId(NameInputValue);  
         }
     };
+
+    // highest id
+
+    const { highestClusterId, highestClustererror } = GetHighestClusterId();
+
+    // receiver address
+
+    const [recieverInputValue, setReceiverInputValue] = useState('');
+    const [receiverQueryId, setReceiverQueryId] = useState<string | null>(null);  
+    
+    const { receiverAddress, receiverError  } = GetReceivingAddress(receiverQueryId);
+    
+    const handleInputReceiver = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setReceiverInputValue(e.target.value);
+    };
+    
+    const handleQueryClickReceiver = () => {
+        if (recieverInputValue) {  
+          setReceiverQueryId(recieverInputValue);  
+        }
+    };
+
+        // Register Cluster
+
+        const [registerInputValue, setRegisterInputValue] = useState('');
+        
+        const [message, setMessage] = useState<string | null>(null);
+
+
+        // Button click handler
+        const handleRegisterClick = async () => {
+
+          try {
+            const result = RegisterCluster(registerInputValue); 
+            if (result.hash) {
+              setMessage('Transaction was successful!');
+            } else {
+              setMessage('Transaction failed.');
+            }
+          } catch (error: any) {
+            setMessage(`Error: ${error.message}`);
+          }
+        };
+        
+        const handleInputRegister = (e: React.ChangeEvent<HTMLInputElement>) => {
+          setRegisterInputValue(e.target.value);
+        };
+        
+
+
+
     return (
       <VStack
         bgColor="#818181"
@@ -221,7 +275,9 @@ function ContractCalls() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <VStack>
+              <VStack
+              spacing={4}
+              >
                 <Flex
                   alignContent="center"
                   alignItems="center"
@@ -232,6 +288,12 @@ function ContractCalls() {
                   color="black"
                   fontWeight="bold"
                   fontSize="18px">Highest Cluster ID:</Text>
+                  <Text
+                  fontWeight="bold"
+                  color="black"
+                  >
+                  {highestClusterId ? highestClusterId.toString() : 'Loading...'}
+                  </Text>
                 </Flex>
                 <Divider />
                 <Flex
@@ -400,6 +462,8 @@ function ContractCalls() {
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
                     _placeholder={{ color: "#02b0b3" }}
+                    onChange={handleInputReceiver}
+                    value={recieverInputValue}
                   ></Input>
   
                   <Button
@@ -428,14 +492,34 @@ function ContractCalls() {
                     display="flex"
                     alignItems="center"
                     boxSizing="border-box"
+                    onClick={handleQueryClickReceiver}
                   >
                     Query
                   </Button>
+                  
                 </Flex>
+                <Flex
+                  alignContent="center"
+                  alignItems="center"
+                  flexDirection="row"
+                  width="600px"
+                >
+                <Text
+                  justifySelf="left"
+                  textAlign="left"
+                  color="black"
+                  fontSize="16px"
+                  fontWeight="bold"
+                  >
+                  {receiverAddress ? receiverAddress.toString() : ''}
+                  </Text>
+                  </Flex>
               </VStack>
             </TabPanel>
             <TabPanel>
-              <VStack>
+              <VStack
+              spacing={4}
+              >
                 <Flex
                   alignContent="center"
                   alignItems="center"
@@ -465,6 +549,8 @@ function ContractCalls() {
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
                     _placeholder={{ color: "#02b0b3" }}
+                    onChange={handleInputRegister}
+                    value={registerInputValue}
                   ></Input>
                   <Button
                     _active={{
@@ -492,6 +578,7 @@ function ContractCalls() {
                     display="flex"
                     alignItems="center"
                     boxSizing="border-box"
+                    onClick={handleRegisterClick}
                   >
                     Register
                   </Button>

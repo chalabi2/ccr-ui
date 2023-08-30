@@ -47,7 +47,6 @@ export const addCantoNetworkToMetaMask = async () => {
             decimals: 18
           },
           rpcUrls: ['https://canto.evm.chandrastation.com'], 
-          blockExplorerUrls: [''] 
         }]
       });
     } catch (error) {
