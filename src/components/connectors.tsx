@@ -303,7 +303,7 @@ function ContractCalls() {
           setRegisterInputValue(e.target.value);
         };
         
-
+        const { address } = useAccount()
 
 
     return (
@@ -425,6 +425,7 @@ function ContractCalls() {
                     alignItems="center"
                     boxSizing="border-box"
                     onClick={handleQueryClickName}
+                    isDisabled={!address || !NameInputValue}
                   >
                     Query
                   </Button>
@@ -493,6 +494,7 @@ function ContractCalls() {
                     alignItems="center"
                     boxSizing="border-box"
                     onClick={handleQueryClick}
+                    isDisabled={!address || !inputValue}
                   >
                     Query
                   </Button>
@@ -562,6 +564,7 @@ function ContractCalls() {
                     alignItems="center"
                     boxSizing="border-box"
                     onClick={handleQueryClickReceiver}
+                    isDisabled={!address || !recieverInputValue}
                   >
                     Query
                   </Button>
@@ -648,6 +651,7 @@ function ContractCalls() {
                     alignItems="center"
                     boxSizing="border-box"
                     onClick={handleRegisterClick}
+                    isDisabled={!address || !registerInputValue}
                   >
                     Register
                   </Button>
@@ -729,6 +733,7 @@ function ContractCalls() {
                     display="flex"
                     alignItems="center"
                     boxSizing="border-box"
+                    isDisabled={!address}
                   >
                     Change
                   </Button>
