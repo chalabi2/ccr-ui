@@ -17,13 +17,11 @@ import {
     Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
   ModalFooter,
   } from "@chakra-ui/react";
   import { useEffect, useState } from "react";
-  import { useConnectMetaMask } from "../hooks/connector";
   import Web3 from "web3";
   import { useClusterQuery } from "../hooks/getClusterById";
   import { useClusterIdByName } from "../hooks/getIdByClusterName";

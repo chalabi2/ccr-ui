@@ -14,7 +14,7 @@ export function Connect() {
   const { disconnect } = useDisconnect();
 
   const { chain } = useNetwork();
-  const { chains, error: switchError, isLoading: switchIsLoading, pendingChainId, switchNetwork } =
+  const { error: switchError, switchNetwork } =
     useSwitchNetwork();
 
 
