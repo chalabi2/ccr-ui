@@ -18,7 +18,9 @@ import {
   import { useEffect, useState } from "react";
   import { useConnectMetaMask } from "../hooks/connector";
   import Web3 from "web3";
-  
+  import { useClusterQuery } from "../hooks/getClusterById";
+  import { useClusterIdByName } from "../hooks/getIdByClusterName";
+
   // Wallet connector & contract interaction
   export function ContractWindow() {
     return (
@@ -148,7 +150,39 @@ import {
   }
   
   // contract interactions
-  function ContractCalls() {
+
+function ContractCalls() {
+  // get name by id
+    const [inputValue, setInputValue] = useState('');
+    const [queryId, setQueryId] = useState<string | null>(null);  // Set initial value to null
+    
+    const { clusterName, error } = useClusterQuery(queryId);
+    
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(e.target.value);
+    };
+    
+    const handleQueryClick = () => {
+        if (inputValue) {  // Optionally, ensure inputValue is not an empty string
+            setQueryId(inputValue);  // Trigger the contract call with the inputValue
+        }
+    };
+
+    // get id by name
+    const [NameInputValue, setNameInputValue] = useState('');
+    const [nameQueryId, setNameQueryId] = useState<string | null>(null);  // Set initial value to null
+    
+    const { clusterId,  } = useClusterIdByName(nameQueryId);
+    
+    const handleInputChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNameInputValue(e.target.value);
+    };
+    
+    const handleQueryClickName = () => {
+        if (NameInputValue) {  // Optionally, ensure inputValue is not an empty string
+          setNameQueryId(NameInputValue);  // Trigger the contract call with the inputValue
+        }
+    };
     return (
       <VStack
         bgColor="#818181"
@@ -194,7 +228,10 @@ import {
                   flexDirection="row"
                   width="600px"
                 >
-                  <Text fontSize="18px">Highest Cluster ID:</Text>
+                  <Text 
+                  color="black"
+                  fontWeight="bold"
+                  fontSize="18px">Highest Cluster ID:</Text>
                 </Flex>
                 <Divider />
                 <Flex
@@ -203,7 +240,10 @@ import {
                   flexDirection="row"
                   width="600px"
                 >
-                  <Text fontSize="18px">Get ID by cluster name:</Text>
+                  <Text 
+                  color="black"
+                  fontWeight="bold"
+                  fontSize="18px">Get ID by cluster name:</Text>
                   <Input
                     placeholder="Cluster Name"
                     color={"black"}
@@ -223,6 +263,8 @@ import {
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
                     _placeholder={{ color: "#02b0b3" }}
+                    onChange={handleInputChangeName}
+                    value={NameInputValue}
                   ></Input>
   
                   <Button
@@ -251,9 +293,13 @@ import {
                     display="flex"
                     alignItems="center"
                     boxSizing="border-box"
+                    onClick={handleQueryClickName}
                   >
                     Query
                   </Button>
+                  {clusterId?.toString && clusterId !== 0n && (
+    <Text color="black" fontWeight="bold">{clusterId.toString()}</Text>
+)}
                 </Flex>
                 <Divider />
                 <Flex
@@ -262,7 +308,10 @@ import {
                   flexDirection="row"
                   width="600px"
                 >
-                  <Text fontSize="18px">Get name by cluster ID:</Text>
+                  <Text 
+                  color="black"
+                  fontWeight="bold"
+                  fontSize="18px">Get name by cluster ID:</Text>
                   <Input
                     placeholder="Cluster ID"
                     color={"black"}
@@ -282,6 +331,8 @@ import {
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
                     _placeholder={{ color: "#02b0b3" }}
+                    onChange={handleInputChange}
+                    value={inputValue}
                   ></Input>
   
                   <Button
@@ -310,9 +361,14 @@ import {
                     display="flex"
                     alignItems="center"
                     boxSizing="border-box"
+                    onClick={handleQueryClick}
                   >
                     Query
                   </Button>
+                  {clusterName && <Text
+                  color="black"
+                  fontWeight="bold"
+                  >{clusterName.toString()}</Text>}
                 </Flex>
                 <Divider />
                 <Flex
@@ -321,7 +377,10 @@ import {
                   flexDirection="row"
                   width="600px"
                 >
-                  <Text fontSize="18px">Get Receiver:</Text>
+                  <Text 
+                  color="black"
+                  fontWeight="bold"
+                  fontSize="18px">Get Receiver:</Text>
                   <Input
                     placeholder="Cluster ID"
                     color={"black"}
@@ -383,7 +442,10 @@ import {
                   flexDirection="row"
                   width="600px"
                 >
-                  <Text fontSize="18px">Register Contract</Text>
+                  <Text 
+                  color="black"
+                  fontWeight="bold"
+                  fontSize="18px">Register Contract</Text>
                   <Input
                     placeholder="Cluster Name"
                     color={"black"}
@@ -441,7 +503,10 @@ import {
                   flexDirection="row"
                   width="600px"
                 >
-                  <Text fontSize="18px">Change Receiver</Text>
+                  <Text 
+                  color="black"
+                  fontWeight="bold"
+                  fontSize="18px">Change Receiver</Text>
                   <Input
                     placeholder="Cluster ID"
                     color={"black"}

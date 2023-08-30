@@ -6,6 +6,9 @@ import {
 } from "@chakra-ui/react";
 import { Window } from "./components/window";
 import './fonts/fonts.css'
+import { WagmiConfig } from 'wagmi'
+
+import { config } from './wagmi'
 
 const customTheme = extendTheme({
   fonts: {
@@ -30,9 +33,11 @@ const customTheme = extendTheme({
 });
 export const App = () => (
   <ChakraProvider theme={customTheme}>
+    <WagmiConfig config={config}>
     <Box position="relative" width="100vw" height="100vh">
       <Window/>
     </Box>
+    </WagmiConfig>
   </ChakraProvider>
 );
 
