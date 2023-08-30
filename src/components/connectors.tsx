@@ -157,7 +157,7 @@ import {
 function ContractCalls() {
   // get name by id
     const [inputValue, setInputValue] = useState('');
-    const [queryId, setQueryId] = useState<string | null>(null);  
+    const [queryId, setQueryId] = useState('');  
     
     const { clusterName } = useClusterQuery(queryId);
     
@@ -173,7 +173,7 @@ function ContractCalls() {
 
     // get id by name
     const [NameInputValue, setNameInputValue] = useState('');
-    const [nameQueryId, setNameQueryId] = useState<string | null>(null); 
+    const [nameQueryId, setNameQueryId] = useState(''); 
     
     const { clusterId,  } = useClusterIdByName(nameQueryId);
     
@@ -194,7 +194,7 @@ function ContractCalls() {
     // receiver address
 
     const [recieverInputValue, setReceiverInputValue] = useState('');
-    const [receiverQueryId, setReceiverQueryId] = useState<string | null>(null);  
+    const [receiverQueryId, setReceiverQueryId] = useState('');  
     
     const { receiverAddress  } = GetReceivingAddress(receiverQueryId);
     

@@ -1,7 +1,7 @@
 import { useContractRead } from 'wagmi';
 import { clusterRegistryAbi } from "../abis/ClusterRegistryAbi";
 
-export function useClusterIdByName(name: string | null) {
+export function useClusterIdByName(name: string) {
 
     if (!name) {
         name = "";

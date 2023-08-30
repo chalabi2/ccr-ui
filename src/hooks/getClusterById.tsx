@@ -12,6 +12,7 @@ export function useClusterQuery(id: string | null) {
       address: '0x605166f88044a4DA4C1Bdd947bAcD7e24D6eaBD3',
       abi: clusterRegistryAbi,
       functionName: 'getClusterByID',
+       //@ts-ignore
       args: [BigInt(id)],
     });
 

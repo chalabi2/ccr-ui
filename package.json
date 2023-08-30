@@ -1,6 +1,5 @@
 {
   "name": "coolapp",
-  "homepage": "https://chalabi2.github.io/ccr-ui/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
