@@ -92,10 +92,15 @@ const StyledContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('/canto99.png');
-    background-size: fit;       
-    background-repeat: no-repeat; 
-    background-position: center;
+    background: repeating-linear-gradient(
+    0deg,
+    #151515 0%,
+    #151515 4px,
+    #141a18 4px,
+    #141a18 8px
+  );
+  background-repeat: repeat-y;
+  display: flex;
     z-index: 1;
 
   }
@@ -121,8 +126,8 @@ const StyledContainer = styled.div`
     background: rgb(0, 0, 128);
     background: linear-gradient(
         90deg,
-        #008689 0%,      
-        #02b0b3 100%  
+        #02cf7c 0%,      
+        #06FC99 100%  
       );
     padding: 5px;
   

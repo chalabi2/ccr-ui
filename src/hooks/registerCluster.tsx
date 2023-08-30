@@ -21,9 +21,9 @@ export function RegisterCluster(name: string | null) {
       hash: data?.hash,
     });
   
-    console.log(write)
+
     if (write) {
-     write(); // Directly call the write function here
+     write(); 
     }
   
     return {

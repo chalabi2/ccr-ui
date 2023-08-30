@@ -95,13 +95,13 @@ import {
           <Button
             _active={{
               backgroundColor: "grey.200",
-              color: "#008689",
-              borderColor: "#008689",
+              color: "#02cf7c",
+              borderColor: "#02cf7c",
             }}
             _selected={{
               backgroundColor: "grey.200",
-              color: "#008689",
-              borderColor: "#008689",
+              color: "#02cf7c",
+              borderColor: "#02cf7c",
             }}
             _hover={{ backgroundColor: "grey.200" }}
             color={"black"}
@@ -251,7 +251,7 @@ function ContractCalls() {
             <Tab
               color="black"
               _hover={{ backgroundColor: "grey.200" }}
-              _selected={{ color: "black", borderColor: "#008689" }}
+              _selected={{ color: "black", borderColor: "#02cf7c" }}
               borderTop="3px solid #efefef"
               bgColor="lightgrey"
               borderLeft="3px solid #efefef"
@@ -263,7 +263,7 @@ function ContractCalls() {
             <Tab
               color="black"
               _hover={{ backgroundColor: "grey.200" }}
-              _selected={{ color: "black", borderColor: "#008689" }}
+              _selected={{ color: "black", borderColor: "#02cf7c" }}
               borderTop="3px solid #efefef"
               bgColor="lightgrey"
               borderLeft="3px solid #efefef"
@@ -324,7 +324,7 @@ function ContractCalls() {
                       background: "grey.200",
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
-                    _placeholder={{ color: "#02b0b3" }}
+                    _placeholder={{ color: "#06FC99" }}
                     onChange={handleInputChangeName}
                     value={NameInputValue}
                   ></Input>
@@ -332,13 +332,13 @@ function ContractCalls() {
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
@@ -392,7 +392,7 @@ function ContractCalls() {
                       background: "grey.200",
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
-                    _placeholder={{ color: "#02b0b3" }}
+                    _placeholder={{ color: "#06FC99" }}
                     onChange={handleInputChange}
                     value={inputValue}
                   ></Input>
@@ -400,13 +400,13 @@ function ContractCalls() {
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
@@ -461,7 +461,7 @@ function ContractCalls() {
                       background: "grey.200",
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
-                    _placeholder={{ color: "#02b0b3" }}
+                    _placeholder={{ color: "#06FC99" }}
                     onChange={handleInputReceiver}
                     value={recieverInputValue}
                   ></Input>
@@ -469,13 +469,13 @@ function ContractCalls() {
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
@@ -548,20 +548,20 @@ function ContractCalls() {
                       background: "grey.200",
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
-                    _placeholder={{ color: "#02b0b3" }}
+                    _placeholder={{ color: "#06FC99" }}
                     onChange={handleInputRegister}
                     value={registerInputValue}
                   ></Input>
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
@@ -612,7 +612,7 @@ function ContractCalls() {
                       background: "grey.200",
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
-                    _placeholder={{ color: "#02b0b3" }}
+                    _placeholder={{ color: "#06FC99" }}
                   ></Input>
                   <Input
                     placeholder="New Receiver"
@@ -632,18 +632,18 @@ function ContractCalls() {
                       background: "grey.200",
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
-                    _placeholder={{ color: "#02b0b3" }}
+                    _placeholder={{ color: "#06FC99" }}
                   ></Input>
                   <Button
                     _active={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _selected={{
                       backgroundColor: "grey.200",
-                      color: "#008689",
-                      borderColor: "#008689",
+                      color: "#02cf7c",
+                      borderColor: "#02cf7c",
                     }}
                     _hover={{ backgroundColor: "grey.200" }}
                     color={"black"}
