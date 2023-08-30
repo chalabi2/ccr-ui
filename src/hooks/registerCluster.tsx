@@ -1,30 +1,54 @@
-
-import { useWaitForTransaction } from 'wagmi'
-
+import { useState } from 'react';
+import { useWaitForTransaction } from 'wagmi';
 import {
   usePrepareClusterRegistryRegister,
   useClusterRegistryRegister,
-} from '../generated'
+} from '../generated';
 
-export function RegisterCluster(name: string | null) {
-    console.log('in register',name);
-    const {
-      config,
-    } = usePrepareClusterRegistryRegister({
-      args: name ? [name] : undefined,
-    });
-    const { data, write } = useClusterRegistryRegister(config);
-  
-    const { isSuccess } = useWaitForTransaction({
-      hash: data?.hash,
-    });
+export function useRegisterCluster() {
+  const [name, setName] = useState<string | null>(null);
   
 
+  const {
+    config,
+    error: prepareError,
+    isError: isPrepareError,
+  } = usePrepareClusterRegistryRegister({
+    args: name ? [name] : undefined,
+  });
+  
+
+  const { 
+    data, 
+    write, 
+    error: registerError, 
+    isError: isRegisterError 
+  } = useClusterRegistryRegister(config);
+  
+  const { 
+    isSuccess, 
+    error: transactionError, 
+    isError: isTransactionError 
+  } = useWaitForTransaction({
+    hash: data?.hash,
+  });
+
+  const register = () => {
     if (write) {
-     write(); 
+      write();
     }
-  
-    return {
-      hash: isSuccess,
-    };
-  }
+  };
+
+  return {
+    data,
+    setName,
+    register,
+    isSuccess,
+    prepareError,
+    isPrepareError,
+    registerError,
+    isRegisterError,
+    transactionError,
+    isTransactionError,
+  };
+}

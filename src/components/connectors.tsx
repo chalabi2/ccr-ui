@@ -27,9 +27,10 @@ import {
   import { useClusterIdByName } from "../hooks/getIdByClusterName";
   import { GetHighestClusterId } from "../hooks/getHIghestClusterId";
   import { GetReceivingAddress } from "../hooks/getReceiver"
-  import { RegisterCluster } from "../hooks/registerCluster";
+  import { useRegisterCluster } from "../hooks/registerCluster";
   import { Connect } from "../hooks/Connect";
   import { useAccount, useNetwork } from 'wagmi'
+import { useChangeReceivingAddress } from "../hooks/changeReceiver";
 
   // Wallet connector & contract interaction
   export function ContractWindow() {
@@ -224,6 +225,9 @@ import {
   // contract interactions
 
 function ContractCalls() {
+  // set account
+  const { address } = useAccount()
+
   // get name by id
     const [inputValue, setInputValue] = useState('');
     const [queryId, setQueryId] = useState('');  
@@ -279,34 +283,72 @@ function ContractCalls() {
 
         // Register Cluster
 
+        const [isButtonClicked, setIsButtonClicked] = useState(false);
+
         const [registerInputValue, setRegisterInputValue] = useState('');
         
         const [message, setMessage] = useState<string | null>(null);
 
 
-        // Button click handler
-        const handleRegisterClick = async () => {
+        const { 
+          setName, 
+          register, 
+          isSuccess, 
+          data, 
+          prepareError, 
+          isPrepareError, 
+          registerError, 
+          isRegisterError 
+      } = useRegisterCluster();
+      
+      const handleRegisterClick = () => {
+        setName(registerInputValue);
+        setIsButtonClicked(true);
+        register();
+        if (isSuccess) {
+            setMessage('Transaction was successful!');
+        } else {
+            setMessage('Transaction failed.');
+        }
+    };
 
-          try {
-            const result = RegisterCluster(registerInputValue);
-            
-            if (result.hash) {
-              setMessage('Transaction was successful!');
-              console.log(message)
-            } else {
-              setMessage('Transaction failed.');
-            }
-          } catch (error: any) {
-            setMessage(`Error: ${error.message}`);
-          }
-        };
-        
         const handleInputRegister = (e: React.ChangeEvent<HTMLInputElement>) => {
           setRegisterInputValue(e.target.value);
         };
         
-        const { address } = useAccount()
 
+        // Change Address
+
+        const [changeInputValueAddress, setChangeInputValueAddress] = useState('');
+        const [changeInputValueId, setChangeInputValueId] = useState('');
+
+        const {
+          setAddress,
+          setId,
+          changeAddress,
+          isLoading,
+          isSuccessChange,
+          error,
+        } = useChangeReceivingAddress();
+
+        const handleInputChangeAddress = (e: React.ChangeEvent<HTMLInputElement>) => {
+          setChangeInputValueAddress(e.target.value);
+        };
+
+        const handleInputChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
+          setChangeInputValueId(e.target.value);
+        };
+      
+        const handleChangeAddressClick = () => {
+          setAddress(changeInputValueAddress);
+          setId(changeInputValueId);
+          changeAddress();
+          if (isSuccessChange) {
+            setMessage('Successfully Changed the Receiving Address!');
+          } else if (error) {
+            setMessage(`Error: ${error.message}`);
+          }
+        };
 
     return (
       <VStack
@@ -657,6 +699,34 @@ function ContractCalls() {
                   >
                     Register
                   </Button>
+                  {isButtonClicked && (
+    <div style={{ width: '70px', height: '25px', overflowY: 'auto' }}>
+        {isSuccess && (
+            <div>
+                Successfully Registered your Cluster
+                <div>
+                    <a href={`https://tuber.build/tx/${data?.hash}`}>Tuber</a>
+                </div>
+            </div>
+        )}
+    </div>
+)}
+
+{isButtonClicked && (
+    <div style={{ width: '70px', height: '25px', overflowY: 'auto' }}>
+        {isPrepareError && (
+            <div>Error: {prepareError?.message}</div>
+        )}
+    </div>
+)}
+
+{isButtonClicked && (
+    <div style={{ width: '70px', height: '25px', overflowY: 'auto' }}>
+        {isRegisterError && (
+            <div>Error: {registerError?.message}</div>
+        )}
+    </div>
+)}
                 </Flex>
                 <Divider />
                 <Flex
@@ -688,6 +758,8 @@ function ContractCalls() {
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
                     _placeholder={{ color: "#06FC99" }}
+                    value={changeInputValueId}
+                    onChange={handleInputChangeId}
                   ></Input>
                   <Input
                     placeholder="New Receiver"
@@ -708,6 +780,8 @@ function ContractCalls() {
                     }}
                     _selected={{ color: "grey.200", borderColor: "white" }}
                     _placeholder={{ color: "#06FC99" }}
+                    value={changeInputValueAddress}
+                    onChange={handleInputChangeAddress}
                   ></Input>
                   <Button
                     _active={{
@@ -735,7 +809,8 @@ function ContractCalls() {
                     display="flex"
                     alignItems="center"
                     boxSizing="border-box"
-                    isDisabled={!address}
+                    isDisabled={!address || !changeInputValueAddress || !changeInputValueId }
+                    onClick={handleChangeAddressClick}
                   >
                     Change
                   </Button>
