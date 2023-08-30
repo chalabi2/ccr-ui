@@ -1,0 +1,1 @@
+(self.webpackChunkcoolapp=self.webpackChunkcoolapp||[]).push([[942],{4654:()=>{},2361:()=>{},4616:()=>{}}]);

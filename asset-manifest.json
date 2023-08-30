@@ -1,9 +1,11 @@
 {
   "files": {
     "main.css": "/ccr-ui/static/css/main.1adaee10.css",
-    "main.js": "/ccr-ui/static/js/main.51f07409.js",
+    "main.js": "/ccr-ui/static/js/main.ab9c5694.js",
     "static/js/208.2faddd14.chunk.js": "/ccr-ui/static/js/208.2faddd14.chunk.js",
+    "static/js/942.0c380abb.chunk.js": "/ccr-ui/static/js/942.0c380abb.chunk.js",
     "static/js/787.f334fa52.chunk.js": "/ccr-ui/static/js/787.f334fa52.chunk.js",
+    "static/js/419.98361f9a.chunk.js": "/ccr-ui/static/js/419.98361f9a.chunk.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/ccr-ui/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/ccr-ui/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
     "static/media/fontawesome-webfont.ttf?v=4.7.0": "/ccr-ui/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
@@ -12,12 +14,13 @@
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/ccr-ui/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/ccr-ui/index.html",
     "main.1adaee10.css.map": "/ccr-ui/static/css/main.1adaee10.css.map",
-    "main.51f07409.js.map": "/ccr-ui/static/js/main.51f07409.js.map",
+    "main.ab9c5694.js.map": "/ccr-ui/static/js/main.ab9c5694.js.map",
     "208.2faddd14.chunk.js.map": "/ccr-ui/static/js/208.2faddd14.chunk.js.map",
-    "787.f334fa52.chunk.js.map": "/ccr-ui/static/js/787.f334fa52.chunk.js.map"
+    "787.f334fa52.chunk.js.map": "/ccr-ui/static/js/787.f334fa52.chunk.js.map",
+    "419.98361f9a.chunk.js.map": "/ccr-ui/static/js/419.98361f9a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1adaee10.css",
-    "static/js/main.51f07409.js"
+    "static/js/main.ab9c5694.js"
   ]
 }
