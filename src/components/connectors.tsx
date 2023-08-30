@@ -159,7 +159,7 @@ function ContractCalls() {
     const [inputValue, setInputValue] = useState('');
     const [queryId, setQueryId] = useState<string | null>(null);  
     
-    const { clusterName, error } = useClusterQuery(queryId);
+    const { clusterName } = useClusterQuery(queryId);
     
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
@@ -189,14 +189,14 @@ function ContractCalls() {
 
     // highest id
 
-    const { highestClusterId, highestClustererror } = GetHighestClusterId();
+    const { highestClusterId } = GetHighestClusterId();
 
     // receiver address
 
     const [recieverInputValue, setReceiverInputValue] = useState('');
     const [receiverQueryId, setReceiverQueryId] = useState<string | null>(null);  
     
-    const { receiverAddress, receiverError  } = GetReceivingAddress(receiverQueryId);
+    const { receiverAddress  } = GetReceivingAddress(receiverQueryId);
     
     const handleInputReceiver = (e: React.ChangeEvent<HTMLInputElement>) => {
       setReceiverInputValue(e.target.value);
@@ -219,9 +219,11 @@ function ContractCalls() {
         const handleRegisterClick = async () => {
 
           try {
-            const result = RegisterCluster(registerInputValue); 
+            const result = RegisterCluster(registerInputValue);
+            
             if (result.hash) {
               setMessage('Transaction was successful!');
+              console.log(message)
             } else {
               setMessage('Transaction failed.');
             }

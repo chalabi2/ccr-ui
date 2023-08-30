@@ -9,7 +9,11 @@ export function Window () {
   <div className="wmp">
     <div className="top-bar">
       <div className="title">
-        <img src="/canto-logo.svg" />
+        
+        <img 
+        // @ts-ignore
+        alt="logo"
+        src="/canto-logo.svg" />
         <h1>Canto Cluster Registry </h1>
       </div>
       <div className="buttons">

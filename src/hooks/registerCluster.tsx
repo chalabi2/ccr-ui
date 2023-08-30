@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import { useWaitForTransaction } from 'wagmi'
 
 import {
@@ -10,14 +10,12 @@ export function RegisterCluster(name: string | null) {
     console.log('in register',name);
     const {
       config,
-      error: prepareError,
-      isError: isPrepareError,
     } = usePrepareClusterRegistryRegister({
       args: name ? [name] : undefined,
     });
-    const { data, error, isError, write } = useClusterRegistryRegister(config);
+    const { data, write } = useClusterRegistryRegister(config);
   
-    const { isLoading, isSuccess } = useWaitForTransaction({
+    const { isSuccess } = useWaitForTransaction({
       hash: data?.hash,
     });
   

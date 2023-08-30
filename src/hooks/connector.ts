@@ -1,4 +1,5 @@
 import { useState } from "react";
+// @ts-ignore
 import WalletLink from "@coinbase/wallet-sdk";
 
 export const useConnectMetaMask = (): [string | null, () => Promise<void>, (account: string | null) => void, boolean] => {
