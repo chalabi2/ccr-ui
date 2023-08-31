@@ -5,6 +5,9 @@ import { Link } from "@chakra-ui/react";
 export function Window () {
     return (
         <StyledContainer>
+          <MobileWarningBox>
+        Desktop Reccomended
+      </MobileWarningBox>
             <div className="container">
   <div className="wmp">
     <div className="top-bar">
@@ -67,6 +70,36 @@ export function Window () {
         </StyledContainer>
     )
 }
+
+const MobileWarningBox = styled.div`
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    0deg,
+    #151515 0%,
+    #151515 4px,
+    #141a18 4px,
+    #141a18 8px
+  );
+  color: white;
+  font-size: 24px;
+  z-index: 2000; // High z-index to ensure it's above everything else
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  @media (max-width: 1200px) {
+    display: flex;
+  }
+
+  @media (max-height: 800px) {
+    display: flex;
+  }
+`;
 
 
 
