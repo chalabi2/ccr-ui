@@ -1,7 +1,22 @@
 import { Button, Box, Text, Grid } from "@chakra-ui/react";
+import React from "react";
 import { useEffect } from "react";
 import { BaseError } from "viem";
 import { useAccount, useConnect, useDisconnect, useNetwork, useSwitchNetwork } from "wagmi";
+
+function underlineFirstLetters(str: string): JSX.Element {
+  return (
+    <>
+      {str.split(' ').map((word, index) => (
+        <React.Fragment key={index}>
+          <span style={{ textDecoration: 'underline' }}>{word.charAt(0)}</span>
+          {word.slice(1)}
+          {index !== str.split(' ').length - 1 && '\u00A0'} 
+        </React.Fragment>
+      ))}
+    </>
+  );
+}
 
 export function Connect() {
   const { connector, isConnected } = useAccount();
@@ -60,7 +75,7 @@ export function Connect() {
           alignItems="center"
           boxSizing="border-box"
           onClick={() => disconnect()}>
-            Disconnect
+             <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>D</span>isconnect
           </Button>
         )}
         {connectors
@@ -96,8 +111,9 @@ export function Connect() {
               key={x.id}
               onClick={() => connect({ connector: x })}
               isLoading={isLoading && x.id === pendingConnector?.id}
+              zIndex={1000}
             >
-              {x.name}
+              {underlineFirstLetters(x.name)}
             </Button>
           ))}
       </Grid>

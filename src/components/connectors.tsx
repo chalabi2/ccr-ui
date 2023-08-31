@@ -129,7 +129,14 @@ import { useChangeReceivingAddress } from "../hooks/changeReceiver";
             boxSizing="border-box"
             onClick={handleMetaMaskClick}
           >
-            {connected ? "Disconnect" : "Connect Wallet"}
+              {connected ? 
+        <><span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>D</span>isconnect</> 
+        : 
+        <>
+        <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>C</span>onnect&nbsp;
+        <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>W</span>allet
+    </>
+    }
           </Button>
            <Modal 
            size="md"
@@ -287,6 +294,7 @@ function ContractCalls() {
 
         const [registerInputValue, setRegisterInputValue] = useState('');
         
+        //@ts-ignore
         const [message, setMessage] = useState<string | null>(null);
 
 
@@ -326,7 +334,6 @@ function ContractCalls() {
           setAddress,
           setId,
           changeAddress,
-          isLoading,
           isSuccessChange,
           error,
         } = useChangeReceivingAddress();
@@ -371,7 +378,7 @@ function ContractCalls() {
               borderRight="3px solid black"
               borderBottom="3px solid black"
             >
-              Read
+              <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>R</span>ead
             </Tab>
             <Tab
               color="black"
@@ -383,7 +390,7 @@ function ContractCalls() {
               borderRight="3px solid black"
               borderBottom="3px solid black"
             >
-              Write
+              <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>W</span>rite
             </Tab>
           </TabList>
           <TabPanels>
@@ -471,7 +478,7 @@ function ContractCalls() {
                     onClick={handleQueryClickName}
                     isDisabled={!address || !NameInputValue}
                   >
-                    Query
+                   <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Q</span>uery
                   </Button>
                   {clusterId?.toString && clusterId !== 0n && (
     <Text color="black" fontWeight="bold">{clusterId.toString()}</Text>
@@ -540,7 +547,7 @@ function ContractCalls() {
                     onClick={handleQueryClick}
                     isDisabled={!address || !inputValue}
                   >
-                    Query
+                   <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Q</span>uery
                   </Button>
                   {clusterName && <Text
                   color="black"
@@ -610,7 +617,7 @@ function ContractCalls() {
                     onClick={handleQueryClickReceiver}
                     isDisabled={!address || !recieverInputValue}
                   >
-                    Query
+                    <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Q</span>uery
                   </Button>
                   
                 </Flex>
@@ -697,7 +704,7 @@ function ContractCalls() {
                     onClick={handleRegisterClick}
                     isDisabled={!address || !registerInputValue}
                   >
-                    Register
+                    <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>R</span>egister
                   </Button>
                   {isButtonClicked && (
     <div style={{ width: '70px', height: '25px', overflowY: 'auto' }}>
@@ -812,7 +819,7 @@ function ContractCalls() {
                     isDisabled={!address || !changeInputValueAddress || !changeInputValueId }
                     onClick={handleChangeAddressClick}
                   >
-                    Change
+                    <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>C</span>hange
                   </Button>
                 </Flex>
               </VStack>

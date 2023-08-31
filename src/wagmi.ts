@@ -3,6 +3,8 @@ import { canto } from 'wagmi/chains'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+import { LedgerConnector } from 'wagmi/connectors/ledger'
 
 
 import { publicProvider } from 'wagmi/providers/public'
@@ -31,12 +33,17 @@ export const config = createConfig({
         shimDisconnect: true,
       },
     }),
-    //new WalletConnectConnector({
-    //  options: {
-    //    projectId: "7700",
-    //    isNewChainsStale: false,
-    //  }
-    //})
+    new WalletConnectConnector({
+      options: {
+        projectId: "ae44fdfc3d3fc13b03a6fe88fe2803bb",
+        isNewChainsStale: false,
+      }
+    }),
+    new LedgerConnector({
+      options: {
+        projectId: "7700",
+      }
+    })
   ],
   publicClient,
   webSocketPublicClient,
